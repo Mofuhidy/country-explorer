@@ -1,7 +1,17 @@
+import { useDispatch } from "react-redux";
 import CountryBox from "../components/CountryBox";
 import Navbar from "../components/Navbar";
-
+import { fetchCountries } from "../redux/countries/countriesSlice";
+import { useEffect } from "react";
 function HomePage() {
+  // const { loading, countries, error } = useSelector(state => state.countries);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCountries());
+  }, [dispatch]);
+
   return (
     <>
       <Navbar />
@@ -34,7 +44,7 @@ function HomePage() {
         </div>
       </div>
       <div className="countries-grid grid grid-cols-2 sm:grid-cols-4 container">
-        <CountryBox />
+        
         <CountryBox />
       </div>
     </>
