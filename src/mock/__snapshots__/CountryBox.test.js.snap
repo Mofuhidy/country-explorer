@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check if the component changed 1`] = `
+<li
+  className="country-box col-span-1 text-white p-4 relative flex flex-col"
+  data-testid="box"
+>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      className=" absolute right-2 top-1 text-xl"
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      style={
+        {
+          "color": undefined,
+        }
+      }
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+      />
+      <polyline
+        points="12 16 16 12 12 8"
+      />
+      <line
+        x1="8"
+        x2="16"
+        y1="12"
+        y2="12"
+      />
+    </svg>
+  </button>
+  <div
+    className=" h-20 w-20 self-center"
+  >
+    <img />
+  </div>
+  <div
+    className="smallDetails self-end"
+  >
+    <p
+      className="countryName font-bold uppercase text-right text-xl"
+    />
+    <p
+      className="countryName font-light text-sm text-right"
+    />
+    <p
+      className="population  text-sm"
+    >
+      population:
+       
+      <span
+        className=" font-bold text-base"
+      />
+    </p>
+  </div>
+</li>
+`;
