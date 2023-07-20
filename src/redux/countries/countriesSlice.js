@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios";
+import { v4 as uuidv4 } from 'uuid';
 
 const baseURL = 'https://restcountries.com/v3.1/all';
 
@@ -32,15 +33,16 @@ export const countrySlice = createSlice({
             state.loading = 'succeeded';
             const countriesData = action.payload.map((country) => {
                 return {
-                      country: country,
+            countryId: uuidv4(),
             name: country.name.common,
+            capital: country.capital,
             region: country.region,
+            languages: country.languages,
             startOfWeek: country.startOfWeek,
             population: country.population,
             continents: country.continents,
             coatOfArms: country.coatOfArms.png,
             flagSmall: country.flag,
-            capital: country.capital,
             flag: country.flags.png,
             capitalLocation: country.capitalInfo.latlng,
             lat: country.latlng[0],
@@ -50,6 +52,7 @@ export const countrySlice = createSlice({
             currency: country.currencies,
             timezones: country.timezones,
             area: country.area,
+            flagAlt: `Flag of ${country.name.common}`
                 }
             })
           state.countries = countriesData;

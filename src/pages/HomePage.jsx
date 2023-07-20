@@ -1,16 +1,28 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CountryBox from "../components/CountryBox";
 import Navbar from "../components/Navbar";
 import { fetchCountries } from "../redux/countries/countriesSlice";
 import { useEffect } from "react";
 function HomePage() {
-  // const { loading, countries, error } = useSelector(state => state.countries);
+  const { loading, countries, error } = useSelector(state => state.countries);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchCountries());
   }, [dispatch]);
+
+  if (loading === "pending") {
+    return (
+      <div className=" h-screen w-full flex justify-center items-center">
+        Loading...
+      </div>
+    );
+  }
+
+  if (error) {
+    <div className="container">{error}</div>;
+  }
 
   return (
     <>
@@ -43,10 +55,19 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div className="countries-grid grid grid-cols-2 sm:grid-cols-4 container">
-        
-        <CountryBox />
-      </div>
+      <ul className="countries-grid grid grid-cols-2 sm:grid-cols-3  w-full">
+        {countries.map(country => (
+          <CountryBox
+            key={country.countryId}
+            flag={country.flag}
+            name={country.name}
+            capital={country.capital}
+            pop={country.population}
+            id={country.countryId}
+            alt={country.flagAlt}
+          />
+        ))}
+      </ul>
     </>
   );
 }
