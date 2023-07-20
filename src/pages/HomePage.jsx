@@ -2,15 +2,24 @@ import { useDispatch, useSelector } from "react-redux";
 import CountryBox from "../components/CountryBox";
 import Navbar from "../components/Navbar";
 import { fetchCountries } from "../redux/countries/countriesSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 function HomePage() {
   const { loading, countries, error } = useSelector(state => state.countries);
-
+  const [searched, setSearchedCountries] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchCountries());
   }, [dispatch]);
+
+  // search filtering
+  const searchedCountries = countries.filter(country =>
+    country.name.toLowerCase().includes(searched.toLowerCase())
+  );
+
+  const handleFiltering = e => {
+    setSearchedCountries(e.target.value);
+  };
 
   if (loading === "pending") {
     return (
@@ -49,6 +58,7 @@ function HomePage() {
             <input
               type="search"
               id="search"
+              onInput={handleFiltering}
               className="p-1 pl-8 rounded text-blue-950 bg-slate-200 placeholder:text-xs text-xs  focus-visible:outline-0 w-48 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="search by country name"
             />
@@ -56,7 +66,7 @@ function HomePage() {
         </div>
       </div>
       <ul className="countries-grid grid grid-cols-2 sm:grid-cols-3  w-full">
-        {countries.map(country => (
+        {searchedCountries.map(country => (
           <CountryBox
             key={country.countryId}
             flag={country.flag}
