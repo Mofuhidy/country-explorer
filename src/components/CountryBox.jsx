@@ -24,6 +24,7 @@ function CountryBox({ flag, name, capital, pop, id, alt }) {
   return (
     <>
       <li
+        data-testid="box"
         className="country-box col-span-1 text-white p-4 relative flex flex-col"
         id={id}>
         <button type="button" onClick={() => navigate(`/conutrydata/${id}`)}>
@@ -48,12 +49,12 @@ function CountryBox({ flag, name, capital, pop, id, alt }) {
 }
 
 CountryBox.propTypes = {
-  flag: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  flag: PropTypes.string,
+  name: PropTypes.string,
   capital: PropTypes.arrayOf(PropTypes.string),
-  pop: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  pop: PropTypes.number,
+  id: PropTypes.string,
+  alt: PropTypes.string,
 };
 
 export default CountryBox;

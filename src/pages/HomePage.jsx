@@ -55,7 +55,7 @@ function HomePage() {
     <>
       <Navbar />
       <div className="">
-        <div className=" h-10 w-full bg-sec p-2 flex items-center justify-between p-6">
+        <div className=" h-10 w-full bg-sec flex items-center justify-between p-6">
           <div className="relative">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg

@@ -36,8 +36,9 @@ function CountryDetails() {
   if (error) {
     <div className="container">{error}</div>;
   }
+
   return (
-    <div>
+    <div data-testid="detailsPage">
       <div className=" bg-main w-full h-16 flex items-center justify-around">
         <button type="button" onClick={() => nav(`/`)}>
           <BiChevronLeft className=" text-3xl" />
