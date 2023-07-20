@@ -5,6 +5,22 @@ import { FiArrowRightCircle } from "@react-icons/all-files/fi/FiArrowRightCircle
 function CountryBox({ flag, name, capital, pop, id, alt }) {
   const navigate = useNavigate();
 
+  const formatNumber = number => {
+    if (number >= 1e9) {
+      // Display numbers greater than or equal to 1 billion as 'X.XXB'
+      return (number / 1e9).toFixed(2) + "B";
+    } else if (number >= 1e6) {
+      // Display numbers greater than or equal to 1 million as 'X.XXM'
+      return (number / 1e6).toFixed(2) + "M";
+    } else if (number >= 1000) {
+      // Display numbers greater than or equal to 1000 as 'X.Xk'
+      return (number / 1000).toFixed(1) + "k";
+    } else {
+      // Display other numbers as they are
+      return number;
+    }
+  };
+
   return (
     <>
       <li
@@ -22,7 +38,8 @@ function CountryBox({ flag, name, capital, pop, id, alt }) {
           </p>
           <p className="countryName font-light text-sm text-right">{capital}</p>
           <p className="population  text-sm">
-            population: <span className=" font-bold text-base">{pop}</span>
+            population:{" "}
+            <span className=" font-bold text-base">{formatNumber(pop)}</span>
           </p>
         </div>
       </li>
