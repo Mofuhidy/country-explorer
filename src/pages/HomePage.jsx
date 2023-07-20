@@ -1,10 +1,11 @@
+import CountryBox from "../components/CountryBox";
 import Navbar from "../components/Navbar";
 
 function HomePage() {
   return (
-    <div>
+    <>
       <Navbar />
-      <div className=" container">
+      <div className="">
         <div className=" h-10 w-full bg-sec p-2 flex items-center ">
           <div className="relative">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -32,7 +33,11 @@ function HomePage() {
           </div>
         </div>
       </div>
-    </div>
+      <div className="countries-grid grid grid-cols-2 sm:grid-cols-4 container">
+        <CountryBox />
+        <CountryBox />
+      </div>
+    </>
   );
 }
 export default HomePage;
